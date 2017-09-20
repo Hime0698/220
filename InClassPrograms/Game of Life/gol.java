@@ -4,12 +4,13 @@ class gol
 {
   public static void main(String [] args)
   {
-    readFile();
+    boolean [][] thefile = readFile();
+    printArray(thefile);
   }
 
-  public static void readFile()
+  public static boolean [][] readFile()
   {
-    String [] file = null;
+    boolean [][] file = null;
 
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -21,22 +22,29 @@ class gol
       while((line = br.readLine()) != null)
       {
         if (i == 0)
-          file = new String [line.length()];
-        file[i] = line;
+          file = new boolean[line.length()][line.length()];
+
+        for(int j=0; j < line.length(); j++)
+          file[i][j] = (line.charAt(j) == '*');
+
         i++;
-      }
+              }
       br.close();
     } catch (Exception e) {}
 
-    printArray(file);
-    
+    return file;
+
   }
 
-  public static void printArray(String [] arr)
+  public static void printArray(boolean [][] arr)
   {
     for(int i = 0; i < arr.length; i++)
     {
-      System.out.println(i + " -> " + arr[i]);
+      for(int j = 0; j < arr[i].length; j++)
+      {
+        System.out.println(arr[i][j]);
+      }
+      System.out.println();
     }
   }
 }
