@@ -1,14 +1,8 @@
 import java.io.*;
 
-class leadingDigit
+class New
 {
   public static void main(String [] args)
-  {
-
-
-  }
-
-  public String [] readFile()
   {
     try{
       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -19,6 +13,7 @@ class leadingDigit
         System.out.println(line);
       br.close();
     } catch (Exception e) {}
+
 
   }
 }
