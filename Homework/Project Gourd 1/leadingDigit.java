@@ -5,12 +5,13 @@ class leadingDigit
 public static int[] numCount = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 public static double[] numPercent = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
 public static int numLines = 0;
-public static String[] numArray;
+public static int[] numArray;
 
 
   public static void main(String [] args)
   {
     readFile();
+
 
   }
   public static void readFile()
@@ -23,12 +24,12 @@ public static String[] numArray;
       while((line = br.readLine()) !=null)
         numLines += 1;
 
-      String[] numArray = new String[numLines];
+      int[] numArray = new int[numLines];
       int i = 0;
 
       while((line = br.readLine()) !=null)
       {
-        numArray[i] = line;
+        numArray[i] = Integer.parseInt(line);
         i++;
       }
 
@@ -38,14 +39,14 @@ public static String[] numArray;
 
       br.close();
     } catch (Exception e) {}
-
+    calculate();
   }
 
   public static void calculate()
   {
     for(int i = 0; i < numLines; i++)
     {
-      int a = Integer.parseInt(numArray[i]);
+      int a = numArray[i];
       while(a >= 10)
       {
         a /= 10;
@@ -81,7 +82,7 @@ public static String[] numArray;
     numPercent[7] = (numCount[7]/numLines) * 100;
     numPercent[8] = (numCount[8]/numLines) * 100;
     numPercent[9] = (numCount[9]/numLines) * 100;
-
+    readout();
   }
 
   public static void readout()
