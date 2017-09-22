@@ -1,52 +1,40 @@
 import java.io.*;
+import java.util.ArrayList;
 
 class leadingDigit
 {
 public static int[] numCount = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-public static double[] numPercent = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0};
+public static double[] numPercent = new double[10];
 public static int numLines = 0;
-public static int[] numArray;
+public static ArrayList<Integer> numArray = new ArrayList<Integer>();
 
 
   public static void main(String [] args)
   {
-    readFile();
-
 
   }
-  public static void readFile()
-  {
-    try{
+
+  public static ArrayList
+    try
+    {
       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
       String line;
-      numLines = 0;
-      while((line = br.readLine()) !=null)
-        numLines += 1;
-
-      int[] numArray = new int[numLines];
-      int i = 0;
-
       while((line = br.readLine()) !=null)
       {
-        numArray[i] = Integer.parseInt(line);
-        i++;
+        numArray.add(Integer.parseInt(line));
       }
 
       System.out.println(numLines);
-      System.out.println(numArray.length);
-      System.out.println(numArray[1]);
+      System.out.println(numArray.size());
+      System.out.println(numArray.get(0));
 
       br.close();
     } catch (Exception e) {}
-    calculate();
-  }
 
-  public static void calculate()
-  {
-    for(int i = 0; i < numLines; i++)
+    for(int i = 0; i < numArray.size(); i++)
     {
-      int a = numArray[i];
+      int a = numArray.get(i);
       while(a >= 10)
       {
         a /= 10;
@@ -72,21 +60,17 @@ public static int[] numArray;
       if(a == 9)
         numCount[9]++;
     }
-    numPercent[0] = (numCount[0]/numLines) * 100;
-    numPercent[1] = (numCount[1]/numLines) * 100;
-    numPercent[2] = (numCount[2]/numLines) * 100;
-    numPercent[3] = (numCount[3]/numLines) * 100;
-    numPercent[4] = (numCount[4]/numLines) * 100;
-    numPercent[5] = (numCount[5]/numLines) * 100;
-    numPercent[6] = (numCount[6]/numLines) * 100;
-    numPercent[7] = (numCount[7]/numLines) * 100;
-    numPercent[8] = (numCount[8]/numLines) * 100;
-    numPercent[9] = (numCount[9]/numLines) * 100;
-    readout();
-  }
+    numPercent[0] = (numCount[0]/numArray.size()) * 100;
+    numPercent[1] = (numCount[1]/numArray.size()) * 100;
+    numPercent[2] = (numCount[2]/numArray.size()) * 100;
+    numPercent[3] = (numCount[3]/numArray.size()) * 100;
+    numPercent[4] = (numCount[4]/numArray.size()) * 100;
+    numPercent[5] = (numCount[5]/numArray.size()) * 100;
+    numPercent[6] = (numCount[6]/numArray.size()) * 100;
+    numPercent[7] = (numCount[7]/numArray.size()) * 100;
+    numPercent[8] = (numCount[8]/numArray.size()) * 100;
+    numPercent[9] = (numCount[9]/numArray.size()) * 100;
 
-  public static void readout()
-  {
     System.out.println("--------------------------------");
     System.out.println("Leading Digit  Count           %");
     System.out.println("--------------------------------");
