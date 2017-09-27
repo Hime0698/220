@@ -1,3 +1,11 @@
+/* ***************************************************
+ * Jacob Sennett && Tristan Williams
+ * 9-27-17
+ * List
+ *
+ * Program that calculates the leading digit statisatics from a list of numbers
+ *************************************************** */
+
 import java.io.*;
 import java.util.ArrayList;
 
