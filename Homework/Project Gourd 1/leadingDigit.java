@@ -6,7 +6,6 @@ class leadingDigit
 	public static int[] numCount = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	public static double[] numPercent = new double[10];
 	public static ArrayList<String> numArray = new ArrayList<String>();
-	public static ArrayList<Integer> intArray = new ArrayList<Integer>();
 
 	public static void main(String [] args)
 	{
@@ -27,11 +26,8 @@ class leadingDigit
 			String line;
 			while((line = br.readLine()) !=null)
 			{
-				numArray.add(line);
+				numArray.add(line.replaceAll(",", ""));
 			}
-
-			System.out.println(numArray.size());
-			System.out.println(numArray.get(0));
 
 			br.close();
 		} catch (Exception e) {}
@@ -48,9 +44,10 @@ class leadingDigit
 				a /= 10;
 			}
 			numCount[a]++;
+			numPercent[a] = ((numCount[a]/(float)numArray.size()) * 100.00);
 		}
-		numPercent[a] = (numCount[a]/numArray.size()) * 100;
 	}
+
 
 	public static void displayResults()
 	{
