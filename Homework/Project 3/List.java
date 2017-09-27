@@ -1,9 +1,9 @@
 /* ***************************************************
- * <your name>
- * <the date>
- * <the file name>
+ * Jacob Sennett
+ * 9-27-17
+ * List
  *
- * <a simple, short program/class description>
+ * Program that contains the functions requested by ListTest
  *************************************************** */
 
 // the EasyList class
