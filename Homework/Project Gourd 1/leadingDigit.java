@@ -1,11 +1,19 @@
+/* ***************************************************
+ * Jacob Sennett && Tristan Williams
+ * 9-27-17
+ * List
+ *
+ * Program that calculates the leading digit statisatics from a list of numbers
+ *************************************************** */
+
 import java.io.*;
 import java.util.ArrayList;
 
 class leadingDigit
 {
-	public static int[] numCount = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-	public static double[] numPercent = new double[10];
-	public static ArrayList<String> numArray = new ArrayList<String>();
+	public static int[] numCount = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; //array for the number of leading digits
+	public static double[] numPercent = new double[10]; // array to store the percentages
+	public static ArrayList<String> numArray = new ArrayList<String>(); // array to store the read text
 
 	public static void main(String [] args)
 	{
@@ -17,7 +25,7 @@ class leadingDigit
 
 	}
 
-	public static void readFile()
+	public static void readFile() //function to read the file
 	{
 		try
 		{
@@ -26,7 +34,7 @@ class leadingDigit
 			String line;
 			while((line = br.readLine()) !=null)
 			{
-				numArray.add(line.replaceAll(",", ""));
+				numArray.add(line.replaceAll(",", "")); //adds string of the number to the array minus any commas
 			}
 
 			br.close();
@@ -38,18 +46,18 @@ class leadingDigit
 		int a = 0;
 		for(int i = 0; i < numArray.size(); i++)
 		{
-			a = Integer.parseInt(numArray.get(i));
-			while(a >= 10)
+			a = Integer.parseInt(numArray.get(i)); //converts string to integer and puts it in a variable a
+			while(a >= 10) //finds the leading digit
 			{
 				a /= 10;
 			}
-			numCount[a]++;
-			numPercent[a] = ((numCount[a]/(float)numArray.size()) * 100.00);
+			numCount[a]++; //adds one to the counter value stored at the index of the leading digit
+			numPercent[a] = ((numCount[a]/(float)numArray.size()) * 100.00); //calculates the percentage of the leading digita
 		}
 	}
 
 
-	public static void displayResults()
+	public static void displayResults() //displays the results in the proper format
 	{
 		System.out.println("--------------------------------");
 		System.out.println("Leading Digit  Count           %");
