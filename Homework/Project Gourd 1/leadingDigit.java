@@ -13,7 +13,7 @@ class leadingDigit
 {
 	public static int[] numCount = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; //array for the number of leading digits
 	public static double[] numPercent = new double[10]; // array to store the percentages
-	public static ArrayList<String> numArray = new ArrayList<String>(); // array to store the read text
+	public static ArrayList<String> numArray = new ArrayList<String>(); // arrayList to store the read text
 
 	public static void main(String [] args)
 	{
@@ -34,7 +34,7 @@ class leadingDigit
 			String line;
 			while((line = br.readLine()) !=null)
 			{
-				numArray.add(line.replaceAll(",", "")); //adds string of the number to the array minus any commas
+				numArray.add(line.replaceAll(",", "")); //adds string of the number to the arrayList minus any commas
 			}
 
 			br.close();
