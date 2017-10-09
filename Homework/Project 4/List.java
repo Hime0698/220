@@ -85,7 +85,7 @@ public class List
 	// this should not be possible for invalid positions
 	public void SetPos(int pos)
 	{
-		while((!IsEmpty()) && (pos <= GetSize()))
+		while(!IsEmpty())
 		{
 			curr = head;
 			for(int i = 0; i < pos; i++)
@@ -101,6 +101,8 @@ public class List
 	// there should be no wrap-around
 	public void Prev()
 	{
+		int a = GetPos()-1;
+		SetPos(a);
 	}
 
 	// navigates to the next element
@@ -152,7 +154,10 @@ public class List
 	{
 		if(!IsFull())
 		{
-
+			Prev();
+			InsertAfter(data);
+			Next();
+			Next();
 		}
 	}
 
@@ -190,7 +195,9 @@ public class List
 	// returns if the list is empty
 	public boolean IsEmpty()
 	{
-		return true;
+		if(num_items == 0)
+			return true;
+		return false;
 	}
 
 	// returns if the list is full
@@ -227,7 +234,7 @@ public String toString()
 			while(a.getLink() != null)
 			{
 
-				s = Integer.toString(a.getData());
+				s += Integer.toString(a.getData()) + " ";
 				a = a.getLink();
 			}
 			return s;
