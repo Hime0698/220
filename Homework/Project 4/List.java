@@ -150,6 +150,10 @@ public class List
 	// this should not be possible for a full list
 	public void InsertBefore(int data)
 	{
+		if(!IsFull())
+		{
+
+		}
 	}
 
 	// inserts an item after the current element
@@ -192,7 +196,9 @@ public class List
 	// returns if the list is full
 	public boolean IsFull()
 	{
-		return false;
+		if(GetSize() <= MAX_SIZE)
+			return false;
+		return true;
 	}
 
 	// returns if two lists are equal (by value)
@@ -206,7 +212,7 @@ public class List
 	// l should be concatenated to the end of *this
 	// the returned list should not exceed MAX_SIZE elements
 	// the last element of the new list is the current
-	public List Add(List l)
+//	public List Add(List l)
 	{
 	}
 
@@ -214,13 +220,18 @@ public class List
 	// the string "NULL" should be returned for an empty list
 public String toString()
 	{
-		Node a = head;
-		String s = "";
-		while(a.getLink() != null)
-        {
+		if(!IsEmpty())
+		{
+			Node a = head;
+			String s = "";
+			while(a.getLink() != null)
+			{
 
-            s(a.getData());
-            a = a.getLink();
-        }
-	}*/
+				s = Integer.toString(a.getData());
+				a = a.getLink();
+			}
+			return s;
+		}
+		return "NULL";
+	}
 }

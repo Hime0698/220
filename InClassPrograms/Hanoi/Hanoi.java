@@ -3,7 +3,7 @@ class Hanoi
     public static void main(String [] args)
     {
         long startTime = System.nanoTime();
-        Hanoi(32, 'A', 'B', 'C');
+        Hanoi(26, 'A', 'B', 'C');
         long endTime = System.nanoTime();
         long duration = endTime - startTime;
         System.out.println("Duration = " + duration / 1000000000 + " seconds");
