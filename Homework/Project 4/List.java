@@ -1,9 +1,9 @@
 /* ***************************************************
- * <your name>
- * <the date>
- * <the file name>
+ * Jacob Sennett
+ * 10-8-17
+ * List
  *
- * <a simple, short program/class description>
+ * Program that contains functions called by ListTest with a linked list backend
  *************************************************** */
 
 // the Node class
@@ -56,6 +56,9 @@ public class List
 	// remember that an empty list has a "size" of -1 and its "position" is at -1
 	public List()
 	{
+		head = new Node();
+		curr = tail = head;
+		num_items = 0;
 	}
 
 	// copy constructor
@@ -67,12 +70,14 @@ public class List
 	// navigates to the beginning of the list
 	public void First()
 	{
+		curr = head;
 	}
 
 	// navigates to the end of the list
 	// the end of the list is at the last valid item in the list
 	public void Last()
 	{
+		curr = tail;
 	}
 
 	// navigates to the specified element (0-index)
@@ -94,22 +99,34 @@ public class List
 	// there should be no wrap-around
 	public void Next()
 	{
+		if(!IsEmpty())
+			curr = curr.getLink();
 	}
 
 	// returns the location of the current element (or -1)
 	public int GetPos()
 	{
+		if(IsEmpty())
+			return -1;
+		else
+		{
+			return 99;
+		}
 	}
 
 	// returns the value of the current element (or -1)
 	public int GetValue()
 	{
+		if (IsEmpty())
+			return -1;
+		return curr.getData();
 	}
 
 	// returns the size of the list
 	// size does not imply capacity
 	public int GetSize()
 	{
+		return num_items;
 	}
 
 	// inserts an item before the current element
@@ -130,27 +147,36 @@ public class List
 	// this should not be possible for an empty list
 	public void Remove()
 	{
+		while(!IsEmpty())
+		{
+
+		}
 	}
 
 	// replaces the value of the current element with the specified value
 	// this should not be possible for an empty list
 	public void Replace(int data)
 	{
+		if(!IsEmpty())
+			curr.setData(data);
 	}
 
 	// returns if the list is empty
 	public boolean IsEmpty()
 	{
+		return true;
 	}
 
 	// returns if the list is full
 	public boolean IsFull()
 	{
+		return false;
 	}
 
 	// returns if two lists are equal (by value)
 	public boolean Equals(List l)
 	{
+		return true;
 	}
 
 	// returns the concatenation of two lists
@@ -166,5 +192,13 @@ public class List
 	// the string "NULL" should be returned for an empty list
 	public String toString()
 	{
+		Node a = head;
+		String s = "";
+		while(a.getLink() != null)
+        {
+
+            s(a.getData());
+            a = a.getLink();
+        }
 	}
 }
