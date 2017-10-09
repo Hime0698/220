@@ -85,7 +85,16 @@ public class List
 	// this should not be possible for invalid positions
 	public void SetPos(int pos)
 	{
+		while((!IsEmpty()) && (pos <= GetSize()))
+		{
+			curr = head;
+			for(int i = 0; i < pos; i++)
+			{
+				curr = curr.getLink();
+			}
+		}
 	}
+
 
 	// navigates to the previous element
 	// this should not be possible for an empty list
@@ -110,7 +119,14 @@ public class List
 			return -1;
 		else
 		{
-			return 99;
+			int pos = 0;
+			Node a = head;
+			while(a != curr)
+			{
+				pos++;
+				a = a.getLink();
+			}
+			return pos;
 		}
 	}
 
@@ -141,16 +157,22 @@ public class List
 	// this should not be possible for a full list
 	public void InsertAfter(int data)
 	{
+		if(!IsFull())
+		{
+			Node a, b;
+			a = new Node();
+			a.setData(data);
+			b = curr.getLink();
+			curr.setLink(a);
+			a.setLink(b);
+			num_items++;
+		}
 	}
 
 	// removes the current element (collapsing the list)
 	// this should not be possible for an empty list
 	public void Remove()
 	{
-		while(!IsEmpty())
-		{
-
-		}
 	}
 
 	// replaces the value of the current element with the specified value
@@ -190,7 +212,7 @@ public class List
 
 	// returns a string representation of the entire list (e.g., 1 2 3 4 5)
 	// the string "NULL" should be returned for an empty list
-	public String toString()
+public String toString()
 	{
 		Node a = head;
 		String s = "";
@@ -200,5 +222,5 @@ public class List
             s(a.getData());
             a = a.getLink();
         }
-	}
+	}*/
 }
