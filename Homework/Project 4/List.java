@@ -121,7 +121,7 @@ public class List
 			return -1;
 		else
 		{
-			int pos = 0;
+			int pos = -1;
 			Node a = head;
 			while(a != curr)
 			{
@@ -168,12 +168,21 @@ public class List
 	{
 		if(!IsFull())
 		{
-			Node a, b;
-			a = new Node();
-			a.setData(data);
-			b = curr.getLink();
-			curr.setLink(a);
-			a.setLink(b);
+			if(curr == head)
+			{
+				Node p = new Node();
+				curr.setData(data);
+				curr.setLink(p);
+				curr = p;
+
+			}
+			Node p, q;
+			p = new Node();
+			p.setData(data);
+			q = curr.getLink();
+			curr.setLink(p);
+			p.setLink(q);
+			curr = p;
 			num_items++;
 		}
 	}
