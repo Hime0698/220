@@ -65,6 +65,13 @@ public class List
 	// clones the list l and sets the last element as the current
 	public List(List l)
 	{
+		head = null;
+		curr = tail = head;
+		num_items = 0;
+		for(Node a = l.head; a != null; a = a.getLink())
+		{
+			InsertAfter(a.getData());
+		}
 	}
 
 	// navigates to the beginning of the list
@@ -85,12 +92,15 @@ public class List
 	// this should not be possible for invalid positions
 	public void SetPos(int pos)
 	{
-		while(!IsEmpty())
+		if(!IsEmpty())
 		{
-			curr = head;
-			for(int i = 0; i < pos; i++)
+			if(pos >= 0 && pos < GetSize())
 			{
-				curr = curr.getLink();
+				curr = head;
+				for(int i = 0; i < pos; i++)
+				{
+					curr = curr.getLink();
+				}
 			}
 		}
 	}
@@ -103,8 +113,12 @@ public class List
 	{
 		if(!IsEmpty())
 		{
-			int a = GetPos()-1;
-			SetPos(a);
+			if(curr != head)
+			{
+				int a = (GetPos()-1);
+				SetPos(a);
+
+			}
 		}
 	}
 
@@ -113,7 +127,7 @@ public class List
 	// there should be no wrap-around
 	public void Next()
 	{
-		if(!IsEmpty())
+		if(!IsEmpty() && (curr != tail))
 			curr = curr.getLink();
 	}
 
@@ -124,12 +138,12 @@ public class List
 			return -1;
 		else
 		{
-			int pos = -1;
+			int pos = 0;
 			Node a = head;
 			while(a != curr)
 			{
-				pos++;
 				a = a.getLink();
+				pos++;
 			}
 			return pos;
 		}
@@ -147,7 +161,7 @@ public class List
 	// size does not imply capacity
 	public int GetSize()
 	{
-		return num_items -1;
+		return num_items;
 	}
 
 	// inserts an item before the current element
@@ -157,10 +171,26 @@ public class List
 	{
 		if(!IsFull())
 		{
-			Prev();
-			InsertAfter(data);
-			Next();
-			Next();
+			if (curr == head)
+			{
+				if(head == null)
+				{
+					InsertAfter(data);
+				}
+				else
+				{
+					curr = new Node();
+					curr.setData(data);
+					curr.setLink(head);
+					head = curr;
+					num_items++;
+				}
+			}
+			else
+			{
+				Prev();
+				InsertAfter(data);
+			}
 		}
 	}
 
@@ -180,13 +210,15 @@ public class List
 					curr.setData(data);
 					num_items++;
 				}
-				Node p = new Node();
-				curr.setLink(p);
-				p.setData(data);
-				curr = p;
-				tail = curr;
-				num_items++;
-
+				else
+				{
+					Node p = new Node();
+					curr.setLink(p);
+					p.setData(data);
+					curr = p;
+					tail = curr;
+					num_items++;
+				}
 			}
 			else
 			{
@@ -206,7 +238,31 @@ public class List
 	// this should not be possible for an empty list
 	public void Remove()
 	{
-		   
+		if(!IsEmpty())
+		{
+			if(head == tail)
+			{
+				tail = head =curr = null;
+			}
+			else if (curr == head)
+			{
+				Next();
+				head = curr;
+			}
+			else if (curr == tail)
+			{
+				Prev();
+				curr.setLink(null);
+				tail = curr;
+			}
+			else
+			{
+				Node q = curr;
+				Prev();
+				curr.setLink(q.getLink());
+			}
+			num_items--;
+		}
 	}
 
 	// replaces the value of the current element with the specified value
@@ -228,7 +284,7 @@ public class List
 	// returns if the list is full
 	public boolean IsFull()
 	{
-		if(GetSize() <= MAX_SIZE)
+		if(GetSize() < MAX_SIZE)
 			return false;
 		return true;
 	}
@@ -256,7 +312,7 @@ public String toString()
 		{
 			Node a = head;
 			String s = "";
-			while(a.getLink() != null)
+			while(a != null)
 			{
 
 				s += Integer.toString(a.getData()) + " ";
