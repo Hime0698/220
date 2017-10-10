@@ -56,7 +56,7 @@ public class List
 	// remember that an empty list has a "size" of -1 and its "position" is at -1
 	public List()
 	{
-		head = new Node();
+		head = null;
 		curr = tail = head;
 		num_items = 0;
 	}
@@ -101,8 +101,11 @@ public class List
 	// there should be no wrap-around
 	public void Prev()
 	{
-		int a = GetPos()-1;
-		SetPos(a);
+		if(!IsEmpty())
+		{
+			int a = GetPos()-1;
+			SetPos(a);
+		}
 	}
 
 	// navigates to the next element
@@ -144,7 +147,7 @@ public class List
 	// size does not imply capacity
 	public int GetSize()
 	{
-		return num_items;
+		return num_items -1;
 	}
 
 	// inserts an item before the current element
@@ -168,22 +171,34 @@ public class List
 	{
 		if(!IsFull())
 		{
-			if(curr == head)
+			if(curr == tail)
 			{
+				if(head == null)
+				{
+					head = new Node();
+					curr = tail = head;
+					curr.setData(data);
+					num_items++;
+				}
 				Node p = new Node();
-				curr.setData(data);
 				curr.setLink(p);
+				p.setData(data);
 				curr = p;
+				tail = curr;
+				num_items++;
 
 			}
-			Node p, q;
-			p = new Node();
-			p.setData(data);
-			q = curr.getLink();
-			curr.setLink(p);
-			p.setLink(q);
-			curr = p;
-			num_items++;
+			else
+			{
+				Node p, q;
+				p = new Node();
+				p.setData(data);
+				q = curr.getLink();
+				curr.setLink(p);
+				p.setLink(q);
+				curr = p;
+				num_items++;
+			}
 		}
 	}
 
@@ -191,6 +206,7 @@ public class List
 	// this should not be possible for an empty list
 	public void Remove()
 	{
+		   
 	}
 
 	// replaces the value of the current element with the specified value

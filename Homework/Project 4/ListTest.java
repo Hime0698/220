@@ -18,8 +18,8 @@ public class ListTest
 			//b.InsertBefore(i);
 		}
 		System.out.println(" 4 a(" + a.GetSize() + "/" + a.GetPos() + ") = " + a);
-		/*System.out.println(" 5 b(" + b.GetSize() + "/" + b.GetPos() + ") = " + b);
-		List c = new List(a);
+		System.out.println(" 5 b(" + b.GetSize() + "/" + b.GetPos() + ") = " + b);
+		/*List c = new List(a);
 		System.out.println(" 6 c(" + c.GetSize() + "/" + c.GetPos() + ") = " + c);
 		a.Remove();
 		a.Remove();
