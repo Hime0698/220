@@ -28,7 +28,7 @@ public class ListTest
 		a.Remove();
 		a.Remove();
 		System.out.println(" 7 a(" + a.GetSize() + "/" + a.GetPos() + ") = " + a);
-		/*a.First();
+		a.First();
 		a.Remove();
 		for (int i=0; i<a.GetSize()/2; a.Next(),i++)
 		{
@@ -87,6 +87,6 @@ public class ListTest
 		List f = b.Add(a);
 		System.out.println("35 a(" + a.GetSize() + "/" + a.GetPos() + ") = " + a);
 		System.out.println("36 b(" + b.GetSize() + "/" + b.GetPos() + ") = " + b);
-		System.out.println("37 f(" + f.GetSize() + "/" + f.GetPos() + ") = " + f);*/
+		System.out.println("37 f(" + f.GetSize() + "/" + f.GetPos() + ") = " + f);
 	}
 }

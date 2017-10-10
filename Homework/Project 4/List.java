@@ -242,7 +242,7 @@ public class List
 		{
 			if(head == tail)
 			{
-				tail = head =curr = null;
+				tail = head = curr = null;
 			}
 			else if (curr == head)
 			{
@@ -260,6 +260,7 @@ public class List
 				Node q = curr;
 				Prev();
 				curr.setLink(q.getLink());
+				Next();
 			}
 			num_items--;
 		}
@@ -292,6 +293,15 @@ public class List
 	// returns if two lists are equal (by value)
 	public boolean Equals(List l)
 	{
+		if(GetSize() != l.GetSize())
+			return false;
+		for(int i = 0; i < GetSize(); i++)
+		{
+			SetPos(i);
+			l.SetPos(i);
+			if(GetValue() != l.GetValue())
+				return false;
+		}
 		return true;
 	}
 
@@ -300,8 +310,17 @@ public class List
 	// l should be concatenated to the end of *this
 	// the returned list should not exceed MAX_SIZE elements
 	// the last element of the new list is the current
-//	public List Add(List l)
+	public List Add(List l)
 	{
+		l.curr = l.head;
+		List added = new List(this);
+		added.curr = added.tail;
+		for(int i = 0; i < l.GetSize(); i++)
+		{
+			added.InsertAfter(l.GetValue());
+			l.Next();
+		}
+		return added;
 	}
 
 	// returns a string representation of the entire list (e.g., 1 2 3 4 5)
