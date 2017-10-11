@@ -295,11 +295,11 @@ public class List
 	{
 		if(GetSize() != l.GetSize())
 			return false;
-		for(int i = 0; i < GetSize(); i++)
+		Node a = head;
+		Node b = l.head;
+		for(int i = 0; i < GetSize(); i++, a = a.getLink(), b = b.getLink())
 		{
-			SetPos(i);
-			l.SetPos(i);
-			if(GetValue() != l.GetValue())
+			if(a.getData() != b.getData())
 				return false;
 		}
 		return true;
