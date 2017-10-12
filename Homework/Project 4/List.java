@@ -65,10 +65,11 @@ public class List
 	// clones the list l and sets the last element as the current
 	public List(List l)
 	{
+		//following three lines create an empty list
 		head = null;
 		curr = tail = head;
 		num_items = 0;
-		for(Node a = l.head; a != null; a = a.getLink())
+		for(Node a = l.head; a != null; a = a.getLink()) //sets a node to the start of l and adds each item of l to the new list after the last
 		{
 			InsertAfter(a.getData());
 		}
@@ -77,14 +78,14 @@ public class List
 	// navigates to the beginning of the list
 	public void First()
 	{
-		curr = head;
+		curr = head; //head is always the first item
 	}
 
 	// navigates to the end of the list
 	// the end of the list is at the last valid item in the list
 	public void Last()
 	{
-		curr = tail;
+		curr = tail; //tail is always the last item
 	}
 
 	// navigates to the specified element (0-index)
@@ -94,7 +95,7 @@ public class List
 	{
 		if(!IsEmpty())
 		{
-			if(pos >= 0 && pos < GetSize())
+			if(pos >= 0 && pos < GetSize()) //checks to make sure pos in in range
 			{
 				curr = head;
 				for(int i = 0; i < pos; i++)
@@ -171,13 +172,13 @@ public class List
 	{
 		if(!IsFull())
 		{
-			if (curr == head)
+			if (curr == head) //first item in list
 			{
-				if(head == null)
+				if(head == null) //no items in list
 				{
 					InsertAfter(data);
 				}
-				else
+				else //fist item but not empty
 				{
 					curr = new Node();
 					curr.setData(data);
@@ -186,7 +187,7 @@ public class List
 					num_items++;
 				}
 			}
-			else
+			else //normal case
 			{
 				Prev();
 				InsertAfter(data);
@@ -201,16 +202,16 @@ public class List
 	{
 		if(!IsFull())
 		{
-			if(curr == tail)
+			if(curr == tail) //last item in list
 			{
-				if(head == null)
+				if(head == null) // list is empty
 				{
 					head = new Node();
 					curr = tail = head;
 					curr.setData(data);
 					num_items++;
 				}
-				else
+				else //first item in list that is not empty
 				{
 					Node p = new Node();
 					curr.setLink(p);
@@ -220,7 +221,7 @@ public class List
 					num_items++;
 				}
 			}
-			else
+			else // normal case
 			{
 				Node p, q;
 				p = new Node();
@@ -240,22 +241,22 @@ public class List
 	{
 		if(!IsEmpty())
 		{
-			if(head == tail)
+			if(head == tail) //has one item
 			{
 				tail = head = curr = null;
 			}
-			else if (curr == head)
+			else if (curr == head) //first item
 			{
 				Next();
 				head = curr;
 			}
-			else if (curr == tail)
+			else if (curr == tail) // last item
 			{
 				Prev();
 				curr.setLink(null);
 				tail = curr;
 			}
-			else
+			else // normal case
 			{
 				Node q = curr;
 				Prev();
@@ -297,9 +298,9 @@ public class List
 			return false;
 		Node a = head;
 		Node b = l.head;
-		for(int i = 0; i < GetSize(); i++, a = a.getLink(), b = b.getLink())
+		for(int i = 0; i < GetSize(); i++, a = a.getLink(), b = b.getLink()) // increments a and b to next item and the counter as long is the counter is less than the length of the list
 		{
-			if(a.getData() != b.getData())
+			if(a.getData() != b.getData()) // sees if the data at the two locations is the same
 				return false;
 		}
 		return true;
