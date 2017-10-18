@@ -154,7 +154,7 @@ public class List<Jacob>
 	public Jacob GetValue()
 	{
 		if (IsEmpty())
-			return -1;
+			return null;
 		return curr.getData();
 	}
 
@@ -311,7 +311,7 @@ public class List<Jacob>
 	// l should be concatenated to the end of *this
 	// the returned list should not exceed MAX_SIZE elements
 	// the last element of the new list is the current
-	public List<Jacob> Add(List l)
+	public List<Jacob> Add(List<Jacob> l)
 	{
 		l.curr = l.head;
 		List<Jacob> added = new List<Jacob>(this);
@@ -326,7 +326,7 @@ public class List<Jacob>
 
 	// returns a string representation of the entire list (e.g., 1 2 3 4 5)
 	// the string "NULL" should be returned for an empty list
-public String toString()
+	public String toString()
 	{
 		if(!IsEmpty())
 		{
