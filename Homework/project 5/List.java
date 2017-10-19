@@ -1,6 +1,6 @@
 /* ***************************************************
  * Jacob Sennett
- * 10-8-17
+ * 10-19-17
  * Generic List
  *
  * Program that contains functions called by ListTest with a linked list backend and supports Generics
