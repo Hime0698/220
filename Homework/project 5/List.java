@@ -1,9 +1,9 @@
 /* ***************************************************
  * Jacob Sennett
  * 10-8-17
- * List
+ * Generic List
  *
- * Program that contains functions called by ListTest with a linked list backend
+ * Program that contains functions called by ListTest with a linked list backend and supports Generics
  *************************************************** */
 
 // the Node class
@@ -63,7 +63,7 @@ public class List<Jacob>
 
 	// copy constructor
 	// clones the list l and sets the last element as the current
-	public List(List l)
+	public List(List<Jacob> l)
 	{
 		//following three lines create an empty list
 		head = null;
@@ -137,6 +137,7 @@ public class List<Jacob>
 	{
 		if(IsEmpty())
 			return -1;
+
 		else
 		{
 			int pos = 0;
@@ -178,6 +179,7 @@ public class List<Jacob>
 				{
 					InsertAfter(data);
 				}
+
 				else //fist item but not empty
 				{
 					curr = new Node<Jacob>();
@@ -187,6 +189,7 @@ public class List<Jacob>
 					num_items++;
 				}
 			}
+
 			else //normal case
 			{
 				Prev();
@@ -211,6 +214,7 @@ public class List<Jacob>
 					curr.setData(data);
 					num_items++;
 				}
+
 				else //first item in list that is not empty
 				{
 					Node<Jacob> p = new Node<Jacob>();
@@ -221,6 +225,7 @@ public class List<Jacob>
 					num_items++;
 				}
 			}
+
 			else // normal case
 			{
 				Node<Jacob> p, q;
@@ -245,17 +250,20 @@ public class List<Jacob>
 			{
 				tail = head = curr = null;
 			}
+
 			else if (curr == head) //first item
 			{
 				Next();
 				head = curr;
 			}
+
 			else if (curr == tail) // last item
 			{
 				Prev();
 				curr.setLink(null);
 				tail = curr;
 			}
+
 			else // normal case
 			{
 				Node<Jacob> q = curr;
@@ -292,7 +300,7 @@ public class List<Jacob>
 	}
 
 	// returns if two lists are equal (by value)
-	public boolean Equals(List l)
+	public boolean Equals(List<Jacob> l)
 	{
 		if(GetSize() != l.GetSize())
 			return false;
