@@ -292,7 +292,8 @@ public class List<Jacob>
 	}
 
 	// returns if the list is full
-	public boolean IsFull()
+	public boolean Fequals
+	()
 	{
 		if(GetSize() < MAX_SIZE)
 			return false;
