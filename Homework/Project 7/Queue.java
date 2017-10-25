@@ -6,37 +6,38 @@
  * Program that contains functions for Queues
  *************************************************** */
 
- class Queue<Jacob> extends List
+ class Queue<Jacob>
  {
      private List<Jacob> l;
 
-     public void Queue()
+     public Queue() //constructer for empty queue
      {
         l = new List<Jacob>();
      }
 
-     public void Queue(Queue<Jacob> l)
+     public Queue(Queue<Jacob> s) // constructer to clone a queue
      {
          l = new List<Jacob>(s.l);
      }
 
-     public void Enqueue(Jacob data)
+     public void Enqueue(Jacob data) //adds the new data to the end of the queue
      {
             l.Last();
             l.InsertAfter(data);
      }
 
-     public Jacob Dequeue()
+     public Jacob Dequeue() //reads the first item and removes it
      {
          l.First();
          Jacob x = l.GetValue();
          l.Remove();
+         return x;
      }
 
-     public Jacob Peek()
+     public Jacob Peek() // just resds the first item in the queue
      {
          l.First();
-         return l.getData();
+         return l.GetValue();
      }
 
      public int Size()
@@ -54,14 +55,14 @@
          return l.IsFull();
      }
 
-     public boolean Equals(Queue<Jacob> s)
+     public boolean Equals(Queue<Jacob> s) //checks to see if two queues are the same
      {
-         return l.Equals(s.l);
+         return this.l.Equals(s.l);
      }
 
-     public Queue Add(Queue<Jacob> s)
+     public Queue<Jacob> Add(Queue<Jacob> s) //adds two queues together
      {
-         Stack<Jacob> temp = new Stack<Jacob>();
+         Queue<Jacob> temp = new Queue<Jacob>();
          temp.l = l.Add(s.l);
          return temp;
      }
