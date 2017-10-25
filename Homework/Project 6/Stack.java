@@ -53,15 +53,13 @@ class Stack<Jacob> extends List<Jacob>
     {
         return GetSize();
     }
-    
+
     public Stack<Jacob> Add(Stack<Jacob> l)
     {
-        List added = Add(l);
-        Stack d = (Stack) added;
-        return d;
+        add(l);
     }
 
-	public String toString()
+	/*public String toString()
     {
         if(!IsEmpty())
 		{
@@ -76,5 +74,5 @@ class Stack<Jacob> extends List<Jacob>
 			return s;
 		}
 		return "NULL";
-    }
+    }*/
 }
