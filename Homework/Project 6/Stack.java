@@ -15,13 +15,19 @@ class Stack<Jacob> extends List<Jacob>
 
     public Stack()
     {
-        List();
+        head = null;
+		curr = tail = head;
+		num_items = 0;
     }
 
-    public Stack(Stack<Jacob> s)
+    public Stack(Stack<Jacob> l)
     {
-        List(s);
-    }
+		head = null;
+		curr = tail = head;
+		num_items = 0;
+		for(Node<Jacob> a = l.head; a != null; a = a.getLink())
+			InsertAfter(a.getData());
+	}
 
     public void Push(Jacob data)
     {
@@ -45,31 +51,30 @@ class Stack<Jacob> extends List<Jacob>
 
     public int Size()
     {
-        Size();
+        return GetSize();
     }
-
-    public boolean IsEmpty()
-    {
-        return IsEmpty();
-    }
-
-    public boolean IsFull()
-    {
-        return IsFull();
-    }
-
-    public boolean Equals(Stack<Jacob> l)
-    {
-        Equals(l);
-    }
-
+    
     public Stack<Jacob> Add(Stack<Jacob> l)
     {
-        Add(l);
+        List added = Add(l);
+        Stack d = (Stack) added;
+        return d;
     }
 
-    public String toString();
+	public String toString()
     {
-        toString();
+        if(!IsEmpty())
+		{
+			Node<Jacob> a = head;
+			String s = "";
+			while(a != null)
+			{
+
+				s += a.getData().toString() + " ";
+				a = a.getLink();
+			}
+			return s;
+		}
+		return "NULL";
     }
 }
