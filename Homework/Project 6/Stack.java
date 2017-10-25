@@ -1,78 +1,75 @@
 /* ***************************************************
  * Jacob Sennett
- * 10-23-17
+ * 10-25-17
  * Stack
  *
- * Implaments the stack commands
+ * Program that contains the stack addon for the list base
  *************************************************** */
 
-class Stack<Jacob> extends List<Jacob>
+
+class Stack<Jacob>
 {
-    private Node<Jacob> head;
-    private Node<Jacob> tail;
-    private Node<Jacob> curr;
-    private int num_items;
+    private List<Jacob> l;
 
     public Stack()
     {
-        head = null;
-		curr = tail = head;
-		num_items = 0;
+        l = new List<Jacob>();
     }
 
-    public Stack(Stack<Jacob> l)
+    public Stack(Stack<Jacob> s)
     {
-		head = null;
-		curr = tail = head;
-		num_items = 0;
-		for(Node<Jacob> a = l.head; a != null; a = a.getLink())
-			InsertAfter(a.getData());
-	}
+        l = new List<Jacob>(s.l);
+    }
 
     public void Push(Jacob data)
     {
-        First();
-        InsertBefore(data);
+        l.First();
+        l.InsertBefore(data);
     }
 
     public Jacob Pop()
     {
-        First();
-        Jacob x = GetValue();
-        Remove();
-        return x;
+        l.First();
+        Jacob data = l.GetValue();
+        l.Remove();
+        return data;
     }
 
     public Jacob Peek()
     {
-        First();
-        return GetValue();
+        l.First();
+        return l.GetValue();
     }
 
     public int Size()
     {
-        return GetSize();
+        return l.GetSize();
     }
 
-    public Stack<Jacob> Add(Stack<Jacob> l)
+    public boolean IsEmpty()
     {
-        add(l);
+        return l.IsEmpty();
     }
 
-	/*public String toString()
+    public boolean IsFull()
     {
-        if(!IsEmpty())
-		{
-			Node<Jacob> a = head;
-			String s = "";
-			while(a != null)
-			{
+        return l.IsFull();
+    }
 
-				s += a.getData().toString() + " ";
-				a = a.getLink();
-			}
-			return s;
-		}
-		return "NULL";
-    }*/
+    public boolean Equals(Stack<Jacob> s)
+    {
+        return this.l.Equals(s.l);
+    }
+
+    public Stack<Jacob> Add(Stack<Jacob> s)
+    {
+        Stack<Jacob> temp = new Stack<Jacob>();
+        temp.l = l.Add(s.l);
+        return temp;
+    }
+
+    public String toString()
+    {
+        return l.toString();
+    }
 }

@@ -8,57 +8,66 @@
 
  class Queue<Jacob> extends List
  {
+     private List<Jacob> l;
+
      public void Queue()
      {
-        List();
+        l = new List<Jacob>();
      }
 
      public void Queue(Queue<Jacob> l)
      {
-         List(l)
+         l = new List<Jacob>(s.l);
      }
 
      public void Enqueue(Jacob data)
      {
-            Last();
-            InsertAfter(data);
+            l.Last();
+            l.InsertAfter(data);
      }
 
      public Jacob Dequeue()
      {
-         First();
-         Jacob x = GetValue();
-         Remove();
+         l.First();
+         Jacob x = l.GetValue();
+         l.Remove();
      }
 
      public Jacob Peek()
      {
-         First();
-         return getData();
+         l.First();
+         return l.getData();
      }
 
      public int Size()
      {
-         Size();
+         return l.GetSize();
      }
 
      public boolean IsEmpty()
      {
-         IsEmpty();
+         return l.IsEmpty();
      }
 
-     public boolean Equals(Queue<Jacob> l)
+     public boolean IsFull()
      {
-         Equals(l);
+         return l.IsFull();
      }
 
-     public Queue Add(Queue<Jacob> l)
+     public boolean Equals(Queue<Jacob> s)
      {
-         Add(l)
+         return l.Equals(s.l);
+     }
+
+     public Queue Add(Queue<Jacob> s)
+     {
+         Stack<Jacob> temp = new Stack<Jacob>();
+         temp.l = l.Add(s.l);
+         return temp;
      }
 
      public String toString()
      {
-         toString();
+         return l.toString();
      }
  }
