@@ -4,7 +4,7 @@ class Stack<Jacob>
 
     public Stack()
     {
-        l = new List<Jacob>();
+        l = new List<Type>();
     }
 
     public Stack(Stack<Jacob> s)
