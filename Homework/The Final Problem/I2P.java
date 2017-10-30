@@ -14,8 +14,11 @@ Note to self:
 1:
 */
 
-class I2P
+class I2P<Jacob>
 {
+
+    //make a Queue
+
     public static void main(String [] args)
     {
         readLine();
@@ -31,10 +34,18 @@ class I2P
 
             while((line = br.readLine()) != null)
             {
-                System.out.println(line); //change to pipe this into a form for Convert() (or maybe for Evaluate for now)
+                String[] Infix = line.split(""); //change to pipe this into a form for Convert() (or maybe for Evaluate for now)
             }
             br.close();
-        } catch (Exception e) {}
+        } catch (Exception e) {} 
+    }
+
+    public static Queue<jacob> QueueItems([] x)
+    {
+        for(i = 0; i < x.length(); i++)
+        {
+            //push item at array location i to queue
+        }
     }
 
     public static Convert()
