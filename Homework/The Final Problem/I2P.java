@@ -17,7 +17,8 @@ Note to self:
 class I2P<Jacob>
 {
 
-    //make a Queue
+    public static Stack<String> EvalQueue = new Stack<String>();
+    public static String[] Infix;
 
     public static void main(String [] args)
     {
@@ -34,17 +35,17 @@ class I2P<Jacob>
 
             while((line = br.readLine()) != null)
             {
-                String[] Infix = line.split(""); //change to pipe this into a form for Convert() (or maybe for Evaluate for now)
+                Infix = line.split(""); //change to pipe this into a form for Convert() (or maybe for Evaluate for now)
             }
             br.close();
-        } catch (Exception e) {} 
+        } catch (Exception e) {}
     }
 
-    public static Queue<jacob> QueueItems([] x)
+    public static void QueueItems(String[] Infix)
     {
-        for(i = 0; i < x.length(); i++)
+        for(i = 0; i < Infix.length(); i++)
         {
-            //push item at array location i to queue
+            EvalQueue.push(Infix[i]);
         }
     }
 
@@ -55,8 +56,9 @@ class I2P<Jacob>
 
     public static Evaluate()
     {
+        // how to move around a queue??
         //Base case for the string of + - / *
-        //pop x2 and eval
+        //pop x2 convert to double and eval
 
 
     }
