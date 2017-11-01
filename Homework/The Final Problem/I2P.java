@@ -11,7 +11,7 @@ ToDo:
 Note to self:
 0: Evaluate() will need to look at the indavidual charecters in the expression, think of when
     and how this change will occur.
-1:
+1: Queueitems and evaluate should be the same
 */
 
 class I2P<Jacob>
@@ -23,6 +23,8 @@ class I2P<Jacob>
     public static void main(String [] args)
     {
         readLine();
+        QueueItems();
+        Evaluate();``
 
     }
 
