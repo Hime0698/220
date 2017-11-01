@@ -1,4 +1,5 @@
 import java.io.*;
+import java.lang.*;
 
 /*
 ToDo:
@@ -17,14 +18,14 @@ Note to self:
 class I2P<Jacob>
 {
 
-    public static Stack<String> EvalQueue = new Stack<String>();
+    public static Stack<Double> EvalQueue = new Stack<Double>();
     public static String[] Infix;
 
     public static void main(String [] args)
     {
         readLine();
-        QueueItems();
-        Evaluate();``
+        System.out.println(Infix[2]); // for debuging
+        Evaluate();
 
     }
 
@@ -37,31 +38,64 @@ class I2P<Jacob>
 
             while((line = br.readLine()) != null)
             {
-                Infix = line.split(""); //change to pipe this into a form for Convert() (or maybe for Evaluate for now)
+                Infix = line.split("");
             }
             br.close();
         } catch (Exception e) {}
     }
 
-    public static void QueueItems(String[] Infix)
+    public static void Convert()
     {
-        for(i = 0; i < Infix.length(); i++)
+
+    }
+
+    public static void Evaluate()
+    {
+        for(int i = 0; i < Infix.length; i++)
         {
-            EvalQueue.push(Infix[i]);
+            String value = Infix[i];
+            if(value == "+")
+            {
+                Double x = EvalQueue.Pop();
+                Double y = EvalQueue.Pop();
+                EvalQueue.Push((1.0 * x) + y);
+            }
+
+            else if(value == "-")
+            {
+                Double x = EvalQueue.Pop();
+                Double y = EvalQueue.Pop();
+                EvalQueue.Push((1.0 * x) - y);
+            }
+
+            else if(value == "/")
+            {
+                Double x = EvalQueue.Pop();
+                Double y = EvalQueue.Pop();
+                EvalQueue.Push((1.0 * x) / y);
+            }
+
+            else if(value == "*")
+            {
+                Double x = EvalQueue.Pop();
+                Double y = EvalQueue.Pop();
+                EvalQueue.Push((1.0 * x) * y);
+            }
+
+            else if(value == "^")
+            {
+                Double x = EvalQueue.Pop();
+                Double y = EvalQueue.Pop();
+                EvalQueue.Push(Math.pow((1.0 * x), y));
+            }
+
+            else if(value != "+" && value != "-" && value != "*" && value != "/" && value != "^")
+            {
+                EvalQueue.Push(1.0 * (Integer.parseInt(value)));
+            }
+            System.out.println(EvalQueue); // for debuging
+
         }
-    }
-
-    public static Convert()
-    {
-
-    }
-
-    public static Evaluate()
-    {
-        // how to move around a queue??
-        //Base case for the string of + - / *
-        //pop x2 convert to double and eval
-
-
+        System.out.println(EvalQueue); // for debuging
     }
 }
