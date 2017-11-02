@@ -1,5 +1,6 @@
 import java.io.*;
 import java.lang.*;
+import java.util.ArrayList;
 
 /*
 ToDo:
@@ -12,7 +13,8 @@ ToDo:
 Note to self:
 0: Evaluate() will need to look at the indavidual charecters in the expression, think of when
     and how this change will occur.
-1: Queueitems and evaluate should be the same
+1: need to read all lines (detect when there are no more lines)
+2: Have to read the next line and redo the stuff.
 */
 
 class I2P<Jacob>
@@ -24,7 +26,8 @@ class I2P<Jacob>
     public static void main(String [] args)
     {
         readLine();
-        System.out.println(Infix[2]); // for debuging
+        Evaluate();
+        readLine();
         Evaluate();
 
     }
@@ -54,35 +57,35 @@ class I2P<Jacob>
         for(int i = 0; i < Infix.length; i++)
         {
             String value = Infix[i];
-            if(value == "+")
+            if(value.equals("+"))
             {
                 Double x = EvalQueue.Pop();
                 Double y = EvalQueue.Pop();
                 EvalQueue.Push((1.0 * x) + y);
             }
 
-            else if(value == "-")
+            else if(value.equals("-"))
             {
                 Double x = EvalQueue.Pop();
                 Double y = EvalQueue.Pop();
                 EvalQueue.Push((1.0 * x) - y);
             }
 
-            else if(value == "/")
+            else if(value.equals("/"))
             {
                 Double x = EvalQueue.Pop();
                 Double y = EvalQueue.Pop();
                 EvalQueue.Push((1.0 * x) / y);
             }
 
-            else if(value == "*")
+            else if(value.equals("*"))
             {
                 Double x = EvalQueue.Pop();
                 Double y = EvalQueue.Pop();
                 EvalQueue.Push((1.0 * x) * y);
             }
 
-            else if(value == "^")
+            else if(value.equals("^"))
             {
                 Double x = EvalQueue.Pop();
                 Double y = EvalQueue.Pop();
