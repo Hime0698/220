@@ -26,9 +26,7 @@ class I2P<Jacob>
     public static void main(String [] args)
     {
         readLine();
-        Evaluate();
-        readLine();
-        Evaluate();
+
 
     }
 
@@ -42,6 +40,12 @@ class I2P<Jacob>
             while((line = br.readLine()) != null)
             {
                 Infix = line.split("");
+                for(int i = 0; i < Infix.length; i++)
+                {
+                    System.out.print(Infix[i]);
+                }
+                System.out.println();
+                Evaluate();
             }
             br.close();
         } catch (Exception e) {}
@@ -96,9 +100,10 @@ class I2P<Jacob>
             {
                 EvalQueue.Push(1.0 * (Integer.parseInt(value)));
             }
-            System.out.println(EvalQueue); // for debuging
+            //System.out.println(EvalQueue); // for debuging
 
         }
-        System.out.println(EvalQueue); // for debuging
+        System.out.println(EvalQueue.Pop()); // for debuging
+        System.out.println();
     }
 }
