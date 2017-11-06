@@ -2,16 +2,6 @@ import java.io.*;
 import java.lang.*;
 import java.util.ArrayList;
 
-/*
-ToDo:
-0: make Convert()
-*/
-
-/*
-Note to self:
-0: change Evaluate to take from convert instead of readLine
-*/
-
 class Infix2Postfix<Jacob>
 {
 
