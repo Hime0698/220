@@ -12,7 +12,7 @@ Note to self:
 0: change Evaluate to take from convert instead of readLine
 */
 
-class I2P<Jacob>
+class Infix2Postfix<Jacob>
 {
 
     public static Stack<Double> EvalQueue = new Stack<Double>();
