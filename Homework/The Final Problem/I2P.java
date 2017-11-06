@@ -38,19 +38,19 @@ class I2P<Jacob>
 
             while((line = br.readLine()) != null)
             {
-                Infix = line.split("");
+                Infix = line.split(""); //puts the line into an array by indavidual letter
                 for(int i = 0; i < Infix.length; i++)
                 {
-                    System.out.print(Infix[i]);
+                    System.out.print(Infix[i]); // prints the infix statement
                 }
                 System.out.println();
-                Convert();
+                Convert(); //calls the conert fuction
             }
             br.close();
         } catch (Exception e) {}
     }
 
-    public static void Convert()
+    public static void Convert() // function to convert from infix to postfix
     {
         operS = new Stack<String>();
         PostfixQ = new Queue<String>();
@@ -102,7 +102,7 @@ class I2P<Jacob>
         Evaluate();
     }
 
-    public static int stackPrioraty(String x)
+    public static int stackPrioraty(String x) //chexk for postfix prioraty
     {
         if ("^".equals(x) || "*".equals(x) || "/".equals(x))
             return 2;
@@ -114,7 +114,7 @@ class I2P<Jacob>
             return 0;
     }
 
-    public static int infixPriority(String x)
+    public static int infixPriority(String x) // checks the infix prioraty
     {
         if ("(".equals(x) || ")".equals(x))
             return 4;
@@ -132,7 +132,7 @@ class I2P<Jacob>
             return 0;
     }
 
-    public static boolean IsOperand(String value)
+    public static boolean IsOperand(String value) //checks if something is and operancd
     {
         if(value.equals("+") || value.equals("-") || value.equals("/") || value.equals("*") || value.equals("^") || value.equals("(") || value.equals(")"))
             return false;
@@ -140,11 +140,12 @@ class I2P<Jacob>
         return true;
     }
 
-    public static void Evaluate()
+    public static void Evaluate() //evaluates postfix
     {
         while(!PostfixQ.IsEmpty())
         {
             String value = PostfixQ.Dequeue();
+            // each of below contains a case for what to do if the charecter any operator including it not being an operator
             if(value.equals("+"))
             {
                 Double y = EvalQueue.Pop();
@@ -184,10 +185,9 @@ class I2P<Jacob>
             {
                 EvalQueue.Push(1.0 * (Integer.parseInt(value)));
             }
-            //System.out.println(EvalQueue); // for debuging
 
         }
-        System.out.println(EvalQueue.Pop()); // for debuging
+        System.out.println(EvalQueue.Pop()); //prints the result of evaluation
         System.out.println();
     }
 }
