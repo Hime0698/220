@@ -1,3 +1,11 @@
+/* ***************************************************
+ * Jacob Sennett
+ * 11-7-2017
+ * Infix2Postfix
+ *
+ * Program that takes an Infix expression, or file of expressions, converts it to Postfix and evalueates
+ *************************************************** */
+
 import java.io.*;
 import java.lang.*;
 import java.util.ArrayList;
